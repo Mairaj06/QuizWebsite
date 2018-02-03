@@ -1,0 +1,197 @@
+﻿@{
+    ViewBag.Title = "AddQuiz";
+}
+
+
+<link href="~/Content/summernote.css" rel="stylesheet" />
+
+<div class="page-content-wrapper">
+ 
+       <!-- BEGIN CONTENT BODY -->
+    <div class="page-content">
+    
+            <div class="clearfix"></div>
+            <div class="row paddingTop20">
+    <div class="col-lg-12 col-md-12 col-sm-12">            
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        Add Quiz
+                    </div>
+                    <div class="panel-body">
+                        <form id="frmAddQuiz">
+                            <div class="alert alert-dismissible formMessage" style="display: none">
+                                <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+                                <span class="message"></span>
+
+                            </div>
+                            <div class="row paddingTop20">
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <label>
+                                        Quiz Title
+                                    </label>
+
+                                </div>
+
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <input type="text" id="txtTitle" maxlength="50" class="form-control" placeholder="Quiz Title" required="required" />
+                                </div>
+
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <label>
+                                        Quiz Category
+                                    </label>
+
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <select class="form-control customDDL" id="ddlQuizType">
+                                        <option value="0">Select Type</option>
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="row paddingTop20">
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <label>
+                                        Quiz Url
+                                    </label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+
+                                    <input type="text" id="txtUrl" class="form-control" maxlength="50" placeholder="Quiz Url" />
+                                </div>
+
+
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <label>Pass Marks(%)</label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+
+                                    <input type="number" class="form-control" id="txtPassMarks" maxlength="3" min="1" />
+                                </div>
+                            </div>
+                            <div class="row paddingTop20">
+                                <div class="col-lg-6 col-md-6 col-sm-6">
+                                    <div class="row">
+                                        <div class="col-lg-4 col-md-4 col-sm-4">
+                                            <label>
+                                                Based on time
+                                            </label>
+                                        </div>
+
+                                        <div class="col-lg-2 col-md-2 col-sm-2">
+                                            <div class="material-switch">
+                                                <input id="chkBasedOnTime" name="chkBasedOnTime" type="checkbox" onchange="ShowHideTimer(this)" />
+                                                <label for="chkBasedOnTime" class="label-success"></label>
+                                            </div>
+                                        </div>
+
+
+                                        <div class="col-lg-6 col-md-6 col-sm-6" id="divSelectTime" style="display: none">
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                <select class="form-control" style="padding: 5px;" id="ddlHours">
+                                                    <option value="0">Hour(s)</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+
+                                                </select>
+                                            </div>
+                                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                                <select class="form-control" style="padding: 5px;" id="ddlMinutes">
+                                                    <option value="0">Minutes(s)</option>
+                                                    <option value="1">1</option>
+                                                    <option value="2">2</option>
+                                                    <option value="3">3</option>
+
+                                                </select>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <label>
+                                        Allow Reattempt
+                                    </label>
+                                </div>
+                                <div class="col-lg-1 col-md-1 col-sm-1">
+
+
+                                    <div class="material-switch">
+                                        <input id="chkReattempt" name="chkReattempt" type="checkbox" onchange="ShowHideDays(this)" />
+                                        <label for="chkReattempt" class="label-success"></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-3 col-md-3 col-sm-3" id="divSelectDays" style="display: none">
+                                    <div class="col-lg-6 col-md-6 col-sm-6">
+                                        <select class="form-control" style="padding: 5px;" id="ddlDays">
+                                            <option value="0">Day(s)</option>
+                                            <option value="1">1</option>
+                                            <option value="2">2</option>
+                                            <option value="3">3</option>
+                                            <option value="4">4</option>
+                                            <option value="5">5</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row paddingTop20">
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <label>Active</label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="material-switch">
+                                        <input id="chkActive" name="chkActive" type="checkbox" checked="checked" />
+                                        <label for="chkActive" class="label-success"></label>
+                                    </div>
+                                </div>
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <label>Requires Login</label>
+                                </div>
+                                <div class="col-lg-4 col-md-4 col-sm-4">
+                                    <div class="material-switch">
+                                        <input id="chkRequireLogin" name="chkRequireLogin" type="checkbox" />
+                                        <label for="chkRequireLogin" class="label-success"></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row paddingTop20">
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <label>Quiz Description</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10">
+                                    <textarea class="form-control summernote" id="txtDescription" maxlength="500"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="row paddingTop20">
+                                <div class="col-lg-2 col-md-2 col-sm-2">
+                                    <label>Quiz Start Notes</label>
+                                </div>
+                                <div class="col-lg-10 col-md-10 col-sm-10">
+                                    <textarea class="form-control summernote" id="txtQuizNotes" maxlength="500"></textarea>
+
+                                </div>
+                            </div>
+                            <div class="row paddingTop20">
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                    <a role="button" class="btn btn-primary pull-right" href="@Url.Action("Index", "Quiz")">Cancel</a>
+                                    <input type="button" value="Save" class="btn btn-primary pull-right" style="margin-right: 10px;" onclick="AddQuiz()" />
+
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+
+                </div>
+
+        </div>
+    </div>
+
+
+
+
+<script src="@Url.Content("~/Scripts/CustomJs/AddQuiz.js")"></script>
+<script src="~/Scripts/summernote.min.js"></script>
