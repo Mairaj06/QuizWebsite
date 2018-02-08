@@ -162,10 +162,12 @@ namespace QuizServices
             BlQuiz obj = new BlQuiz();
             return obj.LoadAllQuizByCategory(Obj);
         }
-        public QuizViewModel LoadQuizAndQuestions(int QuizId)
+        public QuizViewModel LoadQuizAndQuestions(string QuizId)
         {
+            int quizId = 0;
+            int.TryParse(QuizId, out quizId);
             BlQuiz obj = new BlQuiz();
-            return obj.LoadQuizAndQuestions(QuizId);
+            return obj.LoadQuizAndQuestions(quizId);
         }
         public DataModel.Users SaveUser(Users objUser)
         {

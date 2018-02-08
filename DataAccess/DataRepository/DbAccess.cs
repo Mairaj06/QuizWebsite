@@ -14,7 +14,7 @@ namespace DataAccess.DataRepository
         SqlConnection conn = null;
         SqlCommand command = null;
         SqlDataAdapter adapter = null;
-        string connectionString = ConfigurationManager.ConnectionStrings["HospitalSystemEntitiesADO"].ConnectionString;
+        string connectionString = ConfigurationManager.ConnectionStrings["ConnQuizDB"].ConnectionString;
         private bool disposed = false;
         protected virtual void Dispose(bool disposing)
         {

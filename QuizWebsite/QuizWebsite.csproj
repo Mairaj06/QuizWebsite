@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -137,11 +139,6 @@
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
       <DependentUpon>Settings.settings</DependentUpon>
     </Compile>
-    <Compile Include="Service References\QuizService\Reference.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Compile>
     <Compile Include="Utility\EncryptDecrypt.cs" />
     <Compile Include="Utility\SessionHelper.cs" />
     <Compile Include="Utility\UserInfo.cs" />
@@ -222,6 +219,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="DbScript\QuizDBScript.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -294,34 +292,6 @@
     <Content Include="Content\Toster.css" />
     <Content Include="Scripts\Toster.js" />
     <Content Include="Scripts\_references.js" />
-    <None Include="Service References\QuizService\QuizService.disco" />
-    <None Include="Service References\QuizService\configuration91.svcinfo" />
-    <None Include="Service References\QuizService\configuration.svcinfo" />
-    <Content Include="Service References\QuizService\QuizWebsite.QuizService.CompositeType.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\QuizService\QuizWebsite.QuizService.CustomResponse.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\QuizService\QuizWebsite.QuizService.QuestionOptions.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\QuizService\QuizWebsite.QuizService.Questions.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\QuizService\QuizWebsite.QuizService.Quiz.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\QuizService\QuizWebsite.QuizService.QuizCategories.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <Content Include="Service References\QuizService\QuizWebsite.QuizService.Users.datasource">
-      <DependentUpon>Reference.svcmap</DependentUpon>
-    </Content>
-    <None Include="Service References\QuizService\Reference.svcmap">
-      <Generator>WCF Proxy Generator</Generator>
-      <LastGenOutput>Reference.cs</LastGenOutput>
-    </None>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -344,22 +314,6 @@
     <Content Include="Views\Shared\LeftMenu.cshtml" />
     <Content Include="Views\Shared\Footer.cshtml" />
     <Content Include="Views\Quiz\Categories.cshtml" />
-    <None Include="Service References\QuizService\QuizService.wsdl" />
-    <None Include="Service References\QuizService\QuizService.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\QuizService\QuizService1.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\QuizService\QuizService2.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\QuizService\QuizService3.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Service References\QuizService\QuizService4.xsd">
-      <SubType>Designer</SubType>
-    </None>
     <Content Include="Views\Account\Logon.cshtml" />
     <Content Include="Views\Account\UsersList.cshtml" />
     <Content Include="Views\Results\Index.cshtml" />
@@ -382,7 +336,14 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WCFMetadataStorage Include="Service References\QuizService\" />
+    <ProjectReference Include="..\BusinessRule\BusinessRule.csproj">
+      <Project>{ab5079df-bef1-4739-a191-3e38a14e170d}</Project>
+      <Name>BusinessRule</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataModel\DataModel.csproj">
+      <Project>{f3c6f75c-cffe-475b-abb2-4dafe5d15f7a}</Project>
+      <Name>DataModel</Name>
+    </ProjectReference>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

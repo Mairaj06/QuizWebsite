@@ -1,4 +1,5 @@
 ﻿var quizId;
+var quizActionsUrl = "Quiz/";
 $(function () {
     $('.summernote').summernote({
         minHeight: '150px', toolbar: [
@@ -14,7 +15,7 @@ $(function () {
         ['help', ['help']]
         ],
     });
-    APICall("LoadAllCategories", "SuccessLoadQuizCategory", "FailureLoadQuizCategory", "GET");
+    APICall(quizActionsUrl + "LoadAllCategories", "SuccessLoadQuizCategory", "FailureLoadQuizCategory", "GET");
     quizId = getUrlData()["id"];
     if (quizId == undefined)
         quizId = 0;

@@ -54,14 +54,14 @@ namespace QuizServices
         [WebGet(UriTemplate = "LoadQuestionOptions/{QuestionId}", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         List<QuestionOptions> LoadQuestionOptions(string QuestionId);
 
-        [OperationContract]
-        [WebGet(UriTemplate = "DeleteQuizQuestions/{QuizId}/{QuestionId}", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        /*[OperationContract]
+        [WebInvoke(UriTemplate = "DeleteQuizQuestions/{QuizId}/{QuestionId}",BodyStyle =WebMessageBodyStyle.Wrapped,Method ="GET",  RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         Tuple<Quiz, List<Questions>> DeleteQuizQuestions(string QuizId, string QuestionId);
 
         [OperationContract]
         [WebGet(UriTemplate = "DeleteQuestionOption/{QuestionId}/{OptionId}", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         List<QuestionOptions> DeleteQuestionOption(string QuestionId, string OptionId);
-
+        */
         [OperationContract]
         [WebInvoke(UriTemplate = "SaveQuizCategory", Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         List<QuizCategories> SaveQuizCategory(QuizCategories Obj);
@@ -73,6 +73,10 @@ namespace QuizServices
         [OperationContract]
         [WebInvoke(UriTemplate = "LoadAllQuizByCategory", Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         List<Quiz> LoadAllQuizByCategory(QuizSearch Obj);
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "LoadQuizAndQuestions/{QuizId}",Method ="GET", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        QuizViewModel LoadQuizAndQuestions(string QuizId);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "SaveUser", Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]

@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-
+using BusinessRule;
 namespace QuizWebsite.Controllers
 {
     public class QuizController : Controller
@@ -35,9 +35,17 @@ namespace QuizWebsite.Controllers
         {
             return View();
         }
-        public ActionResult AttemptQuiz()
+        public JsonResult LoadAllQuiz()
         {
-            return View();
+            BlQuiz Obj = new BlQuiz();
+            var data = Obj.LoadAllQuiz(1);
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        public ActionResult AttemptQuiz(int Id=0)
+        {
+            BlQuiz Obj = new BlQuiz();
+            var data = Obj.LoadQuizAndQuestions(1);
+            return View(data);
         }
 
     }

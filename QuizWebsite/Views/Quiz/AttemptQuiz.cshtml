@@ -3,4 +3,65 @@
     Layout = "~/Views/Shared/_UsersLayout.cshtml";
 }
 
-<h2>AttemptQuiz</h2>
+<div class="container">
+    <div class="col-lg-12">
+        <input type="button" value="Start Quiz" class="btn btn-primary" onclick="StartQuiz()" />
+    </div>
+
+    <div class="col-lg-12">
+        <div id="divQuestions">
+
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <input type="button" class="btn btn-primary" value="Next" onclick="ShowNextPrevQuestion('N')" />
+        <input type="button" class="btn btn-primary" value="Previous" onclick="ShowNextPrevQuestion('P')" />
+    </div>
+</div>
+
+<script type="text/javascript">
+var questionList = [{"id":1,"Text":"How r u(1) ? "},{"id":2,"Text":"How r u(2) ? "},{"id":3,"Text":"How r u(3) ? "},{"id":4,"Text":"How r u(4) ? "},{"id":5,"Text":"How r u (5)? "}];
+var questionOptions = [{"Qid":1,"OptionText":"Good"},{"Qid":1,"OptionText ":"Bad"},{"Qid":1,"OptionText":"Sad"},{"Qid":1,"Op tionText":"Nice"},
+{"Qid":2,"OptionText":"Good"},{"Qid":2,"OptionText ":"Bad"},{"Qid":2,"OptionText":"Sad"},{"Qid":2,"Op tionText":"Nice"},
+{"Qid":3,"OptionText":"Good"},{"Qid":3,"OptionText ":"Bad"},{"Qid":3,"OptionText":"Sad"},{"Qid":3,"Op tionText":"Nice"},
+{"Qid":4,"OptionText":"Good"},{"Qid":4,"OptionText ":"Bad"},{"Qid":4,"OptionText":"Sad"},{"Qid":4,"Op tionText":"Nice"},
+{"Qid":5,"OptionText":"Good"},{"Qid":5,"OptionText ":"Bad"},{"Qid":5,"OptionText":"Sad"},{"Qid":5,"Op tionText":"Nice"}];
+
+function StartQuiz()
+{
+var html="<div class='col-lg-12'>";
+for(var i=0;i<questionList.length;i++)
+{
+html+="<div class='col-lg-12 question'>";
+html+=(i+1)+". "+questionList[i].Text;
+html+="<div class='col-lg-12'>";
+var qOptions = questionOptions.filter(function(a){
+return a.Qid == questionList[i].id;
+});
+for(var o=0;o<qOptions.length;o++)
+{
+html+="<div class='row'> <div class='col-lg-2'><input type='radio' /><div class='col-lg-10'>"+qOptions[o].OptionText+"</div></div></div>";
+}
+html+="</div>";
+html+="</div>";
+}
+html+="</div>";
+$("#divQuestions").html(html);
+$(".question").not(":first").hide();
+$(".question:first").addClass("active");
+}
+function ShowNextPrevQuestion(q)
+{
+var currDiv = $(".question.active");
+if(q=="N"){
+$(currDiv).next().show();
+$(currDiv).next().addClass("active")
+}
+else{
+$(currDiv).prev().show();
+$(currDiv).prev().addClass("active")
+}
+$(currDiv).removeClass("active");
+$(currDiv).hide();
+}
+</script>

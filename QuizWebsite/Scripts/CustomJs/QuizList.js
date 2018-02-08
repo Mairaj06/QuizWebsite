@@ -1,6 +1,7 @@
-﻿$(function () {
+﻿var quizActionsUrl = "Quiz/";
+$(function () {
     
-    APICall("LoadAllQuiz/1", "SuccessLoadAllQuiz", "FailureAddQuiz", "GET");
+    APICall(quizActionsUrl+"LoadAllQuiz/1", "SuccessLoadAllQuiz", "FailureAddQuiz", "GET");
 });
 function SuccessLoadAllQuiz(resp)
 {

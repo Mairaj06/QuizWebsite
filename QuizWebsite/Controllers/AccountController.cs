@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BusinessRule;
+using DataModel;
 using QuizWebsite.Utility;
-using QuizWebsite.QuizService;
+
 namespace QuizWebsite.Controllers
 {
     public class AccountController : Controller
@@ -26,8 +28,8 @@ namespace QuizWebsite.Controllers
         {
             string Key = "M@m06m@m";
             User.Password = EncryptDecrypt.Encrypt(User.Password, Key);
-            QuizService.QuizServiceClient Obj = new QuizServiceClient();
-            Obj.SaveUser(User);
+            BlUsers Obj = new BlUsers();
+            Obj.AddUser(User);
             return Json(false);
 
         }

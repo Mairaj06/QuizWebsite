@@ -1,4 +1,4 @@
-﻿var urlVar = "http://localhost/QuizServices/QuizService.svc/";
+﻿var urlVar = "http://localhost/QuizWebSite/";
 var currentPage = 1;
 var itemsOnPage = 20;
 var dataTable = null;
