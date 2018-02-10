@@ -11,12 +11,12 @@ namespace QuizWebsite
             bundles.Add(new ScriptBundle("~/bundles/jquery").Include(
                         "~/Scripts/jquery-3.1.0.js",
             "~/Scripts/bootstrap.js",
-            "~/Scripts/common.js",
+            
             "~/Scripts/Datatables/jquery.dataTables.js",
             "~/Scripts/Datatables/dataTables.bootstrap.js",
             "~/Scripts/Toster.js",
-            "~/Scripts/jquery.blockUI.js"
-
+            "~/Scripts/jquery.blockUI.js",
+            "~/Scripts/common.js"
             ));
 
             // Use the development version of Modernizr to develop with and learn from. Then, when you're

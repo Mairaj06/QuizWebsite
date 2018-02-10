@@ -169,6 +169,7 @@
     <Content Include="Content\fonts\summernote.eot" />
     <Content Include="Content\fonts\summernote.ttf" />
     <Content Include="Content\fonts\summernote.woff" />
+    <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\CustomJs\AddQuiz.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\CustomJs\Categories.js" />
@@ -199,6 +200,7 @@
     <Content Include="fonts\roboto\Roboto-Thin.ttf" />
     <Content Include="fonts\roboto\Roboto-Thin.woff" />
     <Content Include="fonts\roboto\Roboto-Thin.woff2" />
+    <Content Include="Scripts\jquery-3.1.0.js" />
     <Content Include="Scripts\jquery.blockUI.js" />
     <Content Include="Content\fonts\fontawesome-webfont.eot" />
     <Content Include="Content\fonts\fontawesome-webfont.ttf" />
