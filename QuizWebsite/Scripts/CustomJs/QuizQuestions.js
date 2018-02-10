@@ -1,11 +1,11 @@
-﻿var quizID = 0;
+﻿var quizActionsUrl = "Quiz/";
+var quizID = 0;
 var questionID = 0;
 $(function () {
     quizID = getUrlData()["id"];
     if (quizID == undefined)
         quizID = 0;
-    if (quizID > 0)
-        LoadQuizQuestions();
+    
     $("#divAddQuestion").on("shown.bs.modal", function () {
         ResetFormFeilds("frmAddQuestion");
     });
@@ -13,32 +13,29 @@ $(function () {
         $("#optionsHeader").hide();
         $(".questionOption").remove();
     });
+    SuccessLoadQuizQuestions(vmQuizAndQuestions);
 });
-function LoadQuizQuestions()
-{
-    APICall("LoadQuizQuestions/" + quizID, "SuccessLoadQuizQuestions", "FailureLoadQuizQuestions", "GET");
-}
 
 function SuccessLoadQuizQuestions(resp)
 {
     if (resp)
     {
-        $("#panelHeading").html("Questions List for " + resp.m_Item1.Name);
-        if (resp.m_Item2.length > 0)
+        $("#panelHeading").html("Questions List for " + resp.Quiz.Name);
+        if (resp.lstQuestions.length > 0)
         {
             RemoveDataTable("tblQuestions");
             $("#tblQuestions tbody").html("");
             $("#tdNoQuestion").hide();
             
-            for (var i = 0; i < resp.m_Item2.length; i++)
+            for (var i = 0; i < resp.lstQuestions.length; i++)
             {
                 var checked = "";
                 if (resp.m_Item2[i].IsActive)
                     checked = "checked";
-                var row = "<tr class='question'><td>" + (i + 1) + "</td><td>" + resp.m_Item2[i].QuestionText + "</td>" +
-                    "<td><span onclick='ShowOptionsPopUp(" + resp.m_Item2[i].QuestionId + ")' class='glyphicon glyphicon-list icons' title='Options List' data-toggle='tooltip'></span></td>" +
-                    "<td><span onclick='EditQuestion(" + resp.m_Item2[i].QuestionId + "," + resp.m_Item2[i].IsActive + ",\"" + resp.m_Item2[i].QuestionText + "\")' class='glyphicon glyphicon-edit icons' title='Edit' data-toggle='tooltip'></span></td>" +
-                "<td><span class='glyphicon glyphicon-trash icons' title='Delete' data-toggle='tooltip' onclick='ConfirmDeleteQuestion(" + resp.m_Item2[i].QuestionId + "," + resp.m_Item2[i].QuizId + ")'></span></td>" +
+                var row = "<tr class='question'><td>" + (i + 1) + "</td><td>" + resp.lstQuestions[i].QuestionText + "</td>" +
+                    "<td><span onclick='ShowOptionsPopUp(" + resp.lstQuestions[i].QuestionId + ")' class='glyphicon glyphicon-list icons' title='Options List' data-toggle='tooltip'></span></td>" +
+                    "<td><span onclick='EditQuestion(" + resp.lstQuestions[i].QuestionId + "," + resp.lstQuestions[i].IsActive + ",\"" + resp.lstQuestions[i].QuestionText + "\")' class='glyphicon glyphicon-edit icons' title='Edit' data-toggle='tooltip'></span></td>" +
+                    "<td><span class='glyphicon glyphicon-trash icons' title='Delete' data-toggle='tooltip' onclick='ConfirmDeleteQuestion(" + resp.lstQuestions[i].QuestionId + "," + resp.lstQuestions[i].QuizId + ")'></span></td>" +
                 "</tr>";
                 $("#tblQuestions tbody").append(row);
             }

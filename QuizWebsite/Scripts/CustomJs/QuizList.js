@@ -1,7 +1,7 @@
 ﻿var quizActionsUrl = "Quiz/";
 $(function () {
     
-    APICall(quizActionsUrl+"LoadAllQuiz/1", "SuccessLoadAllQuiz", "FailureAddQuiz", "GET");
+    SuccessLoadAllQuiz(quizList);
 });
 function SuccessLoadAllQuiz(resp)
 {

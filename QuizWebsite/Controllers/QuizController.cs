@@ -15,7 +15,8 @@ namespace QuizWebsite.Controllers
         BlQuiz ObjBlQuiz = new BlQuiz();
         public ActionResult Index()
         {
-            return View();
+            var data = ObjBlQuiz.LoadAllQuiz(1);
+            return View(data);
         }
         public ActionResult AddQuiz()
         {
@@ -23,14 +24,15 @@ namespace QuizWebsite.Controllers
             return View();
         }
         [HttpPost]
-        public ActionResult AddQuiz(Quiz ObjQuiz)
+        public ActionResult SaveQuiz(Quiz ObjQuiz)
         {
             ObjBlQuiz.AddQuiz(ObjQuiz);
             return View();
         }
-        public ActionResult QuizQuestions()
+        public ActionResult QuizQuestions(int Id)
         {
-            return View();
+            var data = ObjBlQuiz.LoadQuizQuestions(Id);
+            return View(data);
         }
         public ActionResult Categories()
         {
@@ -47,13 +49,8 @@ namespace QuizWebsite.Controllers
         }
         public ActionResult QuizList()
         {
-            return View();
-        }
-        public JsonResult LoadAllQuiz()
-        {
             
-            var data = ObjBlQuiz.LoadAllQuiz(1);
-            return Json(data, JsonRequestBehavior.AllowGet);
+            return View();
         }
         public ActionResult AttemptQuiz(int Id=0)
         {

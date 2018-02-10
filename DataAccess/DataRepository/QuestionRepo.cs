@@ -121,7 +121,7 @@ namespace DataAccess.DataRepository
             int result = context.SaveChanges();
             return result;
         }
-        public Tuple<Quiz, List<Questions>> LoadAllQuizQuestions(int QuizId)
+        public VMQuizAndQuizQuestions LoadAllQuizQuestions(int QuizId)
         {
             List<Questions> list = context.tblQuizQuestions.Where(q => q.QuizId == QuizId).Select(x => new Questions()
             {
@@ -134,8 +134,11 @@ namespace DataAccess.DataRepository
 
             }).OrderByDescending(x => x.QuestionId).ToList();
             Quiz quiz = new QuizRepo().Get(QuizId);
-            Tuple<Quiz, List<Questions>> tuple = new Tuple<Quiz, List<Questions>>(quiz, list);
-            return tuple;
+            VMQuizAndQuizQuestions Obj = new DataModel.VMQuizAndQuizQuestions();
+            Obj.lstQuestions = list;
+            Obj.Quiz = quiz;
+            //Tuple<Quiz, List<Questions>> tuple = new Tuple<Quiz, List<Questions>>(quiz, list);
+            return Obj;
         }
         public List<QuestionOptions> SaveQuestionOptions(List<QuestionOptions> Options)
         {

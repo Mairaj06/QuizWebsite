@@ -40,7 +40,7 @@ namespace QuizServices
 
         [OperationContract]
         [WebGet(UriTemplate = "LoadQuizQuestions/{QuizId}", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
-        Tuple<Quiz, List<Questions>> LoadQuizQuestions(string QuizId);
+        VMQuizAndQuizQuestions LoadQuizQuestions(string QuizId);
 
         [OperationContract]
         [WebInvoke(UriTemplate = "AddQuestion", Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]

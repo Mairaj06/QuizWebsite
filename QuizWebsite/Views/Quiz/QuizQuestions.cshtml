@@ -1,4 +1,5 @@
-﻿@{
+﻿@model DataModel.VMQuizAndQuizQuestions
+@{
     ViewBag.Title = "QuizQuestions";
 }
 <div class="page-content-wrapper">
@@ -249,7 +250,9 @@
 
 </div>
 
-
+<script>
+    var vmQuizAndQuestions = @Html.Raw(Json.Encode(Model));
+</script>
 
 <script src="~/Scripts/CustomJs/QuizQuestions.js"></script>
 

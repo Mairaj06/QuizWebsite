@@ -50,6 +50,7 @@
     <Compile Include="QuizSearch.cs" />
     <Compile Include="QuizViewModel.cs" />
     <Compile Include="Users.cs" />
+    <Compile Include="VMQuizAndQuizQuestions.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

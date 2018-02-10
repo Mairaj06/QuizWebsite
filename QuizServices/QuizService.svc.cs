@@ -70,7 +70,7 @@ namespace QuizServices
             }
  
         }
-        public Tuple<Quiz, List<Questions>> LoadQuizQuestions(string QuizId)
+        public VMQuizAndQuizQuestions LoadQuizQuestions(string QuizId)
         {
             try
             {
@@ -114,7 +114,7 @@ namespace QuizServices
             return obj.LoadQuestionOptions(questionId);
 
         }
-        public Tuple<Quiz, List<Questions>> DeleteQuizQuestions(string QuizId, string QuestionId)
+        public VMQuizAndQuizQuestions DeleteQuizQuestions(string QuizId, string QuestionId)
         {
             try
             {

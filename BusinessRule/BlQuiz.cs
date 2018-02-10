@@ -31,7 +31,7 @@ namespace BusinessRule
             QuizRepo rep = new QuizRepo();
             return rep.Get(QuizId);
         }
-        public Tuple<Quiz, List<Questions>> LoadQuizQuestions(int QuizId)
+        public VMQuizAndQuizQuestions LoadQuizQuestions(int QuizId)
         {
             QuestionRepo rep = new QuestionRepo();
             return rep.LoadAllQuizQuestions(QuizId);
@@ -68,7 +68,7 @@ namespace BusinessRule
             return repo.LoadQuestionOptions(QuestionId);
             
         }
-        public Tuple<Quiz, List<Questions>> DeleteQuizQuestions(string QuizId, string QuestionId)
+        public VMQuizAndQuizQuestions DeleteQuizQuestions(string QuizId, string QuestionId)
         {
             QuestionRepo repo = new QuestionRepo();
             int QuizID=0;
