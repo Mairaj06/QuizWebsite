@@ -1,4 +1,5 @@
-﻿$(function () {
+﻿var quizActionsUrl = "Quiz/";
+$(function () {
     $("#divAddCategory").on("shown.bs.modal", function () {
         $("#txtCategory").val("");
     });;
@@ -7,7 +8,7 @@
 });
 function LoadQuizCategory()
 {
-    APICall("LoadAllCategories", "SuccessLoadQuizCategory", "FailureLoadQuizCategory", "GET");
+    APICall(quizActionsUrl + "LoadAllCategories", "SuccessLoadQuizCategory", "FailureLoadQuizCategory", "GET");
 }
 function SuccessLoadQuizCategory(resp)
 {
@@ -60,7 +61,7 @@ function SaveQuizCategory(categoryID,category,isDeleted)
     obj.Id = categoryID;
     obj.Category = category;
     obj.IsDeleted = isDeleted;
-    APICall("SaveQuizCategory", "SuccessSaveQuizCategory", "FailureSaveQuizCategory", "POST", JSON.stringify({ Obj: obj }));
+    APICall(quizActionsUrl+"SaveQuizCategory", "SuccessSaveQuizCategory", "FailureSaveQuizCategory", "POST", JSON.stringify({ Obj: obj }));
 }
 function SuccessSaveQuizCategory(resp)
 {

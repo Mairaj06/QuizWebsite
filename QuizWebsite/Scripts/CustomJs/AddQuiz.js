@@ -92,7 +92,7 @@ function AddQuiz()
     if ($("#txtQuizNotes").val() != "")
         objQuiz.QuizNotes = $("#txtQuizNotes").val();
     objQuiz.CreatedBy = 1;
-    APICall("SaveQuiz", "SuccessAddQuiz", "FailureAddQuiz", "POST", JSON.stringify({ objQuiz: objQuiz }));
+    APICall(quizActionsUrl + "SaveQuiz", "SuccessAddQuiz", "FailureAddQuiz", "POST", JSON.stringify({ objQuiz: objQuiz }));
 }
 function SuccessAddQuiz(resp)
 {
