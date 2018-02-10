@@ -15,6 +15,9 @@ $(function () {
     });
     SuccessLoadQuizQuestions(vmQuizAndQuestions);
 });
+function LoadQuizQuestions() {
+    APICall(quizActionsUrl + "AddQuestion", "SuccessSaveQuestion", "FailureSaveQuestion", "POST", JSON.stringify(question));
+}
 
 function SuccessLoadQuizQuestions(resp)
 {
@@ -30,7 +33,7 @@ function SuccessLoadQuizQuestions(resp)
             for (var i = 0; i < resp.lstQuestions.length; i++)
             {
                 var checked = "";
-                if (resp.m_Item2[i].IsActive)
+                if (resp.lstQuestions[i].IsActive)
                     checked = "checked";
                 var row = "<tr class='question'><td>" + (i + 1) + "</td><td>" + resp.lstQuestions[i].QuestionText + "</td>" +
                     "<td><span onclick='ShowOptionsPopUp(" + resp.lstQuestions[i].QuestionId + ")' class='glyphicon glyphicon-list icons' title='Options List' data-toggle='tooltip'></span></td>" +
@@ -46,8 +49,7 @@ function SuccessLoadQuizQuestions(resp)
     }
 }
 
-function SaveQuestion()
-{
+function SaveQuestion() {
     if (!ValidateForm("frmAddQuestion"))
         return;
     var questionText = $("#txtQuestion").val();
@@ -58,7 +60,7 @@ function SaveQuestion()
     question.IsActive = $("#chkActive").is(":checked");
     question.CreatedBy = 1;
 
-    APICall("AddQuestion", "SuccessSaveQuestion", "FailureSaveQuestion", "POST", JSON.stringify({ Question: question }));
+    APICall(quizActionsUrl + "AddQuestion", "SuccessSaveQuestion", "FailureSaveQuestion", "POST", JSON.stringify(question));
 
 }
 function SuccessSaveQuestion(resp)

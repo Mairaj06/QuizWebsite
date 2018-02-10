@@ -34,6 +34,12 @@ namespace QuizWebsite.Controllers
             var data = ObjBlQuiz.LoadQuizQuestions(Id);
             return View(data);
         }
+        [HttpPost]
+        public JsonResult AddQuestion(Questions AddQuestion)
+        {
+            var result = ObjBlQuiz.AddQuestion(AddQuestion);
+            return Json(0);
+        }
         public ActionResult Categories()
         {
             return View();
