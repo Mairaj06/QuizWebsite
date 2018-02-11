@@ -13,13 +13,13 @@ $(function () {
         $("#optionsHeader").hide();
         $(".questionOption").remove();
     });
-    SuccessLoadQuizQuestions(vmQuizAndQuestions);
+    PopulateQuizQuestions(vmQuizAndQuestions);
 });
 function LoadQuizQuestions() {
-    APICall(quizActionsUrl + "AddQuestion", "SuccessSaveQuestion", "FailureSaveQuestion", "POST", JSON.stringify(question));
+    APICall(quizActionsUrl + "LoadQuizQuestions", "PopulateQuizQuestions", "FailureSaveQuestion", "GET", { Id: quizID });
 }
 
-function SuccessLoadQuizQuestions(resp)
+function PopulateQuizQuestions(resp)
 {
     if (resp)
     {
@@ -67,14 +67,6 @@ function SuccessSaveQuestion(resp)
 {
     if (resp.Success) {
         ShowSuccessToastMessage(resp.ErrorMessage);
-        //var qNo = $("tr.question").length;
-        //var row = "<tr class='question'><td>" + (parseInt(qNo) + 1) + "</td><td>" + resp.QuestionText + "</td>" +
-        //            "<td><span onclick='ShowOptionsPopUp(" + resp.QuestionId + ")' class='glyphicon glyphicon-list icons' title='Options List' data-toggle='tooltip'></span></td>" +
-        //            "<td><span onclick='EditQuestion(" + resp.QuestionId + "," + resp.IsActive + ",\"" + resp.QuestionText + "\")' class='glyphicon glyphicon-edit icons' title='Edit' data-toggle='tooltip'></span></td>" +
-        //        "<td><span class='glyphicon glyphicon-trash icons' title='Delete' data-toggle='tooltip'></span></td>" +
-        //        "</tr>";
-
-        //$("#tblQuestions").append(row);
         LoadQuizQuestions();
     }
     else {
@@ -106,7 +98,7 @@ function AddOption() {
 function ShowOptionsPopUp(pquestionID)
 {
     questionID = pquestionID;
-    APICall("LoadQuestionOptions/" + pquestionID, "SuccessLoadQuestionsOptions", "FailureLoadQuestionsOptions", "GET");
+    APICall(quizActionsUrl + "LoadQuestionOptions", "SuccessLoadQuestionsOptions", "FailureLoadQuestionsOptions", "GET", { Id: pquestionID});
     $("#divQuestionOptions").modal("show");
 }
 function SuccessLoadQuestionsOptions(resp)
@@ -140,8 +132,8 @@ function SaveQuestionOptions()
         lstOptions.push(option);
     });
     
-    
-    APICall("SaveQuestionOptions", "SuccessSaveQuestionOptions", "FailureSaveQuestionOptions", "POST", JSON.stringify({ Options: lstOptions }));
+
+    APICall(quizActionsUrl + "SaveQuestionOptions", "SuccessSaveQuestionOptions", "FailureSaveQuestionOptions", "POST", JSON.stringify(lstOptions));
 }
 function SuccessSaveQuestionOptions(resp) {
     if (resp.Success) {
@@ -150,7 +142,7 @@ function SuccessSaveQuestionOptions(resp) {
         $("#divQuestionOptions").modal("hide");
     }
     else {
-        ShowSuccessToastMessage(resp.Message);
+        ShowErrorToastMessage(resp.Message);
         $("#divQuestionOptions").modal("hide");
     }
 }
@@ -209,13 +201,13 @@ function DeleteQuestion()
     var questionId = $("#btnDeleteQuestion").attr("data-questionID");
     var quizId = $("#btnDeleteQuestion").attr("data-quizID");
 
-    APICall("DeleteQuizQuestions/" + quizId + "/" + questionId, "SuccessDeleteQuizQuestions", "FailureDeleteQuizQuestions", "GET");
+    APICall(quizActionsUrl + "DeleteQuestion", "SuccessDeleteQuizQuestions", "FailureDeleteQuizQuestions", "GET", { quizId: quizId, questionId: questionId });
 }
 function SuccessDeleteQuizQuestions(resp) {
     if (resp != null) {
         $("#divDeleteQuestion").modal("hide");
         ShowSuccessToastMessage("Question deleted successfully.");
-        SuccessLoadQuizQuestions(resp);
+        PopulateQuizQuestions(resp);
     }
 }
 function ConfirmDeleteQuestionOption(optionId,questionId) {

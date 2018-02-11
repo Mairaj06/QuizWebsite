@@ -114,7 +114,7 @@ namespace QuizServices
             return obj.LoadQuestionOptions(questionId);
 
         }
-        public VMQuizAndQuizQuestions DeleteQuizQuestions(string QuizId, string QuestionId)
+        public VMQuizAndQuizQuestions DeleteQuizQuestions(int QuizId, int QuestionId)
         {
             try
             {

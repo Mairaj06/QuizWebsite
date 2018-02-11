@@ -68,16 +68,12 @@ namespace BusinessRule
             return repo.LoadQuestionOptions(QuestionId);
             
         }
-        public VMQuizAndQuizQuestions DeleteQuizQuestions(string QuizId, string QuestionId)
+        public VMQuizAndQuizQuestions DeleteQuizQuestions(int QuizId, int QuestionId)
         {
             QuestionRepo repo = new QuestionRepo();
-            int QuizID=0;
-            int QuestionID = 0;
-            int.TryParse(QuizId,out QuizID);
-            int.TryParse(QuestionId,out QuestionID);
-            bool result = repo.DeleteQuestion(QuizID, QuestionID);
+            bool result = repo.DeleteQuestion(QuizId, QuestionId);
             if (result)
-                return repo.LoadAllQuizQuestions(QuizID);
+                return repo.LoadAllQuizQuestions(QuizId);
             else
                 return null;
 

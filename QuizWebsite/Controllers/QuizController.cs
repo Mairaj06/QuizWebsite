@@ -34,11 +34,32 @@ namespace QuizWebsite.Controllers
             var data = ObjBlQuiz.LoadQuizQuestions(Id);
             return View(data);
         }
+        public JsonResult LoadQuizQuestions(int Id)
+        {
+            var data = ObjBlQuiz.LoadQuizQuestions(Id);
+            return Json(data,JsonRequestBehavior.AllowGet);
+        }
         [HttpPost]
         public JsonResult AddQuestion(Questions AddQuestion)
         {
             var result = ObjBlQuiz.AddQuestion(AddQuestion);
-            return Json(0);
+            return Json(result);
+        }
+        public JsonResult DeleteQuestion(int quizId,int questionId)
+        {
+            var result = ObjBlQuiz.DeleteQuizQuestions(quizId, questionId);
+            return Json(result, JsonRequestBehavior.AllowGet);
+        }
+        public JsonResult LoadQuestionOptions(int Id)
+        {
+            var data = ObjBlQuiz.LoadQuestionOptions(Id);
+            return Json(data, JsonRequestBehavior.AllowGet);
+        }
+        [HttpPost]
+        public JsonResult SaveQuestionOptions(List<QuestionOptions> lstOptions)
+        {
+            var result = ObjBlQuiz.AddQuestionOptions(lstOptions);
+            return Json(result);
         }
         public ActionResult Categories()
         {
