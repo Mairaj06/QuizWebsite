@@ -61,7 +61,7 @@ function SaveQuizCategory(categoryID,category,isDeleted)
     obj.Id = categoryID;
     obj.Category = category;
     obj.IsDeleted = isDeleted;
-    APICall(quizActionsUrl+"SaveQuizCategory", "SuccessSaveQuizCategory", "FailureSaveQuizCategory", "POST", JSON.stringify({ Obj: obj }));
+    APICall(quizActionsUrl+"SaveQuizCategory", "SuccessSaveQuizCategory", "FailureSaveQuizCategory", "POST", JSON.stringify(obj));
 }
 function SuccessSaveQuizCategory(resp)
 {

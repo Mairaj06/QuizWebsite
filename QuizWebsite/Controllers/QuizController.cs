@@ -79,9 +79,14 @@ namespace QuizWebsite.Controllers
             var data = ObjBlQuiz.LoadAllQuizCategories();
             return Json(data, JsonRequestBehavior.AllowGet);
         }
+        [HttpPost]
+        public JsonResult SaveQuizCategory(QuizCategories Categoory)
+        {
+            var result = ObjBlQuiz.SaveQuizCategory(Categoory);
+            return Json(result);
+        }
         public ActionResult QuizList()
         {
-            
             return View();
         }
         public ActionResult AttemptQuiz(int Id=0)
