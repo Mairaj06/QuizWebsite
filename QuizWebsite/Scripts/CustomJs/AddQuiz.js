@@ -30,8 +30,7 @@ function SuccessLoadQuizCategory(resp)
             $("#ddlQuizType").append($("<option></option>").attr({ "value": resp[i].Id}).text(resp[i].Category));
         }
     }
-    if (quizId > 0)
-        APICall("LoadQuizById/" + quizId, "SuccessLoadQuizById", "FailureLoadQuizById", "GET");
+    SuccessLoadQuizById(quizModel);
 }
 function SuccessLoadQuizById(resp)
 {

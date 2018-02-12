@@ -218,7 +218,7 @@ function DeleteQuestionOption()
 {
     var questionId = $("#btnDeleteQuestionOption").attr("data-questionID");
     var optionId = $("#btnDeleteQuestionOption").attr("data-optionid");
-    APICall("DeleteQuestionOption/" + questionId + "/" + optionId, "SuccessDeleteQuestionOption", "FailureDeleteQuestionOption", "GET");
+    APICall(quizActionsUrl + "DeleteQuestionOption", "SuccessDeleteQuestionOption", "FailureDeleteQuestionOption", "GET", { QuestionId: questionId, OptionId: optionId});
     
 }
 function SuccessDeleteQuestionOption(resp)

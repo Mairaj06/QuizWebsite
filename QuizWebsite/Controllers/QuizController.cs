@@ -18,10 +18,10 @@ namespace QuizWebsite.Controllers
             var data = ObjBlQuiz.LoadAllQuiz(1);
             return View(data);
         }
-        public ActionResult AddQuiz()
+        public ActionResult AddQuiz(int Id=0)
         {
-            
-            return View();
+            var data = ObjBlQuiz.LoadQuizByID(Id);
+            return View(data);
         }
         [HttpPost]
         public ActionResult SaveQuiz(Quiz ObjQuiz)
@@ -60,6 +60,11 @@ namespace QuizWebsite.Controllers
         {
             var result = ObjBlQuiz.AddQuestionOptions(lstOptions);
             return Json(result);
+        }
+        public JsonResult DeleteQuestionOption(int QuestionId,int OptionId)
+        {
+            var result = ObjBlQuiz.DeleteQuestionOption(QuestionId, OptionId);
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
         public ActionResult Categories()
         {

@@ -1,4 +1,4 @@
-﻿
+﻿@model DataModel.Quiz
 @{
     ViewBag.Title = "AddQuiz";
 }
@@ -192,7 +192,9 @@
     </div>
 
 
-
+<script>
+    var quizModel = @Html.Raw(Json.Encode(Model));
+</script>
 
 <script src="@Url.Content("~/Scripts/CustomJs/AddQuiz.js")"></script>
 <script src="~/Scripts/summernote.min.js"></script>
