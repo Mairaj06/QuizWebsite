@@ -163,7 +163,7 @@
     <Content Include="Content\ThemeCss\fonts\Simple-Line-Icons.svg" />
     <Content Include="Content\ThemeCss\layout.css" />
     <Content Include="Content\ThemeCss\simple-line-icons.css" />
-    <Content Include="DbScript\QuizDBScript.sql" />
+    <Content Include="DbScript\script.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
