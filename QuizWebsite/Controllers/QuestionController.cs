@@ -10,9 +10,9 @@ namespace QuizWebsite.Controllers
     public class QuestionController : Controller
     {
         BlQuiz ObjBlQuiz = new BlQuiz();
-        public ActionResult QuestionsList()
+        public ActionResult QuestionsList(int Id=0)
         {
-            var data = ObjBlQuiz.LoadAllQuestions();
+            var data = ObjBlQuiz.LoadQuizQuestions(Id);
             return View(data);
             
         }

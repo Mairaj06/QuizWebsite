@@ -123,7 +123,9 @@ namespace DataAccess.DataRepository
         }
         public VMQuizAndQuizQuestions LoadAllQuizQuestions(int QuizId)
         {
-            List<Questions> list = context.tblQuizQuestions.Where(q => q.QuizId == QuizId).Select(x => new Questions()
+            List<Questions> list = new List<Questions>();
+            Quiz quiz = new Quiz();
+            list = context.tblQuizQuestions.Where(q => q.QuizId == (QuizId == 0 ? q.QuizId : QuizId)).Select(x => new Questions()
             {
                 QuizId = x.QuizId,
                 QuestionId = x.QuestionId,
@@ -133,7 +135,7 @@ namespace DataAccess.DataRepository
                 UpdatedAt = x.UpdatedAt.Value,
 
             }).OrderByDescending(x => x.QuestionId).ToList();
-            Quiz quiz = new QuizRepo().Get(QuizId);
+            quiz = new QuizRepo().Get(QuizId);
             VMQuizAndQuizQuestions Obj = new DataModel.VMQuizAndQuizQuestions();
             Obj.lstQuestions = list;
             Obj.Quiz = quiz;
