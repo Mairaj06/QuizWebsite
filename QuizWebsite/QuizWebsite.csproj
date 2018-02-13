@@ -131,6 +131,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\QuestionController.cs" />
     <Compile Include="Controllers\QuizController.cs" />
     <Compile Include="Controllers\ResultsController.cs" />
     <Compile Include="Global.asax.cs">
@@ -269,6 +270,7 @@
     <Content Include="Views\Quiz\QuizCategories.cshtml" />
     <Content Include="Views\Quiz\QuizList.cshtml" />
     <Content Include="Views\Quiz\AttemptQuiz.cshtml" />
+    <Content Include="Views\Question\QuestionsList.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

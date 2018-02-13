@@ -36,6 +36,11 @@ namespace BusinessRule
             QuestionRepo rep = new QuestionRepo();
             return rep.LoadAllQuizQuestions(QuizId);
         }
+        public List<Questions> LoadAllQuestions()
+        {
+            QuestionRepo rep = new QuestionRepo();
+            return rep.LoadAllQuestions();
+        }
         public Questions AddQuestion(Questions Question) 
         {
             QuestionRepo rep = new QuestionRepo();

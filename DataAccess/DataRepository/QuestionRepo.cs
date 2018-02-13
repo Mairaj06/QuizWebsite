@@ -140,6 +140,20 @@ namespace DataAccess.DataRepository
             //Tuple<Quiz, List<Questions>> tuple = new Tuple<Quiz, List<Questions>>(quiz, list);
             return Obj;
         }
+        public List<Questions> LoadAllQuestions()
+        {
+            List<Questions> list = context.tblQuizQuestions.Select(x => new Questions()
+            {
+                QuizId = x.QuizId,
+                QuestionId = x.QuestionId,
+                QuestionText = x.QuestionText,
+                IsActive = x.IsActive.Value,
+                CreatedAt = x.CreatedAt.Value,
+                UpdatedAt = x.UpdatedAt.Value,
+
+            }).OrderByDescending(x => x.QuestionId).ToList();
+            return list;
+        }
         public List<QuestionOptions> SaveQuestionOptions(List<QuestionOptions> Options)
         {
             try
