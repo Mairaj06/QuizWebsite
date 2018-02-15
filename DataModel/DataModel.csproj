@@ -40,8 +40,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CommonProperties.cs" />
-    <Compile Include="CustomResponse.cs" />
+    <Compile Include="CommonModels\CommonProperties.cs" />
+    <Compile Include="CommonModels\CustomResponse.cs" />
+    <Compile Include="CommonModels\DataTableResponseModel.cs" />
     <Compile Include="QuestionOptions.cs" />
     <Compile Include="Questions.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -49,8 +50,12 @@
     <Compile Include="QuizCategories.cs" />
     <Compile Include="QuizSearch.cs" />
     <Compile Include="QuizViewModel.cs" />
+    <Compile Include="CommonModels\DataTablePostModel.cs" />
     <Compile Include="Users.cs" />
     <Compile Include="VMQuizAndQuizQuestions.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="SearchModels\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

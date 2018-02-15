@@ -209,33 +209,7 @@ function ValidateForm(frmId) {
 
 }
 
-function ApplyPagination(totalRecord, methodName) {
 
-
-    if (totalRecord > itemsOnPage) {
-        $("#divPagination").pagination({
-            items: totalRecord,
-            itemsOnPage: itemsOnPage,
-            cssStyle: 'light-theme',
-            listStyle: 'pagination',
-            onPageClick: function (pageNumber, event) { LoadDataByPageNumber(pageNumber, event, methodName) }
-
-        });
-        
-        $("#divPagination").pagination('selectPage', currentPage);
-    }
-    if (parseInt(totalRecord) < itemsOnPage)
-        $("#divPagination").hide();
-    else
-        $("#divPagination").show();
-}
-function LoadDataByPageNumber(currentPageNumber, event, methodName) {
-    if (currentPage == currentPageNumber)
-        return;
-    currentPage = currentPageNumber;
-    window[methodName](currentPage, itemsOnPage);
-    return currentPage;
-}
 function BindDataTable(tblId, columns, data, sortColumnIndex, sortOrder) {
     $('#' + tblId).show();
     $('#' + tblId).dataTable().fnDestroy();
@@ -263,6 +237,24 @@ function BindStaticDataTable(tblId, columns) {
         
     });
     $('[data-toggle="tooltip"]').tooltip();
+}
+function BindServerDataTable(tblId, columns,url, sortColumnIndex, sortOrder) {
+    $('#' + tblId).show();
+    dataTable = $('#' + tblId).DataTable({
+        "columns": columns,
+        "serverSide": true,
+        "ajax": {
+            url: url,
+            type: 'POST'
+        },
+        "language": {
+            "search": "",
+            "searchPlaceholder": "Search..."
+        }
+        
+    });
+    $('[data-toggle="tooltip"]').tooltip();
+
 }
 
 function RemoveDataTable(tblId) {
