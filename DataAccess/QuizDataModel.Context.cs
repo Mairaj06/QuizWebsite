@@ -31,5 +31,6 @@ namespace DataAccess
         public DbSet<tblQuiz> tblQuizs { get; set; }
         public DbSet<tblQuizCategory> tblQuizCategories { get; set; }
         public DbSet<tblUser> tblUsers { get; set; }
+        public DbSet<tblUserRole> tblUserRoles { get; set; }
     }
 }

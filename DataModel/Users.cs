@@ -26,4 +26,15 @@ namespace DataModel
         public string Email { get; set; }
         
     }
+
+    [DataContract]
+    public class UserRoles : CommonProperties
+    {
+        [DataMember]
+        public int RoleID { get; set; }
+        [DataMember]
+        public string RoleName { get; set; }
+        [DataMember]
+        public string RoleAbbrivation { get; set; }
+    }
 }

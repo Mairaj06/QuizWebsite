@@ -7,12 +7,15 @@ $(document).ready(function () {
     try {
         $(document).ajaxSend(function (event, request, settings) {
             ajaxCallCounter++;
-            BlockUI('Processing request please wait...');
+            //BlockUI('Processing request please wait...');
+            $("#mainloaderanimation").show();
         });
         $(document).ajaxSuccess(function (event, request, settings) {
             ajaxCallCounter--;
-            if (ajaxCallCounter == 0)
-                UnBlockUI();
+            if (ajaxCallCounter == 0) {
+                $("#mainloaderanimation").hide();
+                //UnBlockUI();
+            }
         });
         $(document).ajaxError(function (event, jqxhr, settings, exception) {
             ajaxCallCounter--;
@@ -21,7 +24,8 @@ $(document).ready(function () {
             else if (jqxhr.status == 403)
                 ShowErrorToastMessage("Your token has expired. Please re-login.");
             else {
-                UnBlockUI();
+                $("#mainloaderanimation").hide();
+                //UnBlockUI();
                 ShowErrorToastMessage("An error occured processing the request");
 
             }

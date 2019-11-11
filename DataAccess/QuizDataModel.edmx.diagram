@@ -11,6 +11,7 @@
         <EntityTypeShape EntityType="QuizDBModel.tblQuiz" Width="1.5" PointX="9.660130300400839" PointY="10.726299723017169" />
         <EntityTypeShape EntityType="QuizDBModel.tblQuizCategory" Width="1.5" PointX="4.678489160108608" PointY="1.9840856352746885" />
         <EntityTypeShape EntityType="QuizDBModel.tblUser" Width="1.5" PointX="4.4461583106062186" PointY="27.692843166968245" />
+        <EntityTypeShape EntityType="QuizDBModel.tblUserRole" Width="1.5" PointX="3.375" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -4,20 +4,12 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="QuizDBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2008" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
-        <EntityContainer Name="QuizDBModelStoreContainer">
-          <EntitySet Name="tblCorrectOptions" EntityType="QuizDBModel.Store.tblCorrectOptions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblQuestionOptions" EntityType="QuizDBModel.Store.tblQuestionOptions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblQuiz" EntityType="QuizDBModel.Store.tblQuiz" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblQuizCategories" EntityType="QuizDBModel.Store.tblQuizCategories" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblQuizQuestions" EntityType="QuizDBModel.Store.tblQuizQuestions" store:Type="Tables" Schema="dbo" />
-          <EntitySet Name="tblUsers" EntityType="QuizDBModel.Store.tblUsers" store:Type="Tables" Schema="dbo" />
-        </EntityContainer>
+    <Schema Namespace="QuizDBModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2008" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="tblCorrectOptions">
           <Key>
             <PropertyRef Name="AnswerId" />
           </Key>
-          <Property Name="AnswerId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="AnswerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="QuestionId" Type="int" />
           <Property Name="CorrectOptionId" Type="int" />
         </EntityType>
@@ -25,7 +17,7 @@
           <Key>
             <PropertyRef Name="OptionId" />
           </Key>
-          <Property Name="OptionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="OptionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="QuestionId" Type="int" Nullable="false" />
           <Property Name="OptionText" Type="varchar" MaxLength="50" />
           <Property Name="OptionOrder" Type="int" />
@@ -39,7 +31,7 @@
           <Key>
             <PropertyRef Name="ID" />
           </Key>
-          <Property Name="ID" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="ID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Name" Type="varchar" MaxLength="100" />
           <Property Name="Description" Type="varchar" MaxLength="1000" />
           <Property Name="Type" Type="int" />
@@ -49,9 +41,9 @@
           <Property Name="ReAttemptDuration" Type="int" />
           <Property Name="PassMarks" Type="int" />
           <Property Name="CreatedBy" Type="int" />
-          <Property Name="CreatedAt" Type="datetime2" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="7" />
           <Property Name="UpdatedBy" Type="int" />
-          <Property Name="UpdatedAt" Type="datetime2" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="7" />
           <Property Name="QuizUrl" Type="varchar" MaxLength="50" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="Minutes" Type="int" />
@@ -62,7 +54,7 @@
           <Key>
             <PropertyRef Name="Id" />
           </Key>
-          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="Category" Type="varchar" MaxLength="50" />
           <Property Name="IsDeleted" Type="bit" />
           <Property Name="CreatedBy" Type="int" />
@@ -72,7 +64,7 @@
           <Key>
             <PropertyRef Name="QuestionId" />
           </Key>
-          <Property Name="QuestionId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="QuestionId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="QuizId" Type="int" Nullable="false" />
           <Property Name="QuestionText" Type="varchar" MaxLength="500" />
           <Property Name="IsActive" Type="bit" />
@@ -81,19 +73,33 @@
           <Property Name="UpdatedBy" Type="int" />
           <Property Name="UpdatedAt" Type="datetime" />
         </EntityType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="RoleName" Type="nchar" MaxLength="250" />
+          <Property Name="RoleAbbrivation" Type="nvarchar" MaxLength="50" />
+          <Property Name="CreatedBy" Type="int" />
+          <Property Name="CreatedAt" Type="datetime" />
+          <Property Name="UpdatedBy" Type="int" />
+          <Property Name="UpdatedAt" Type="datetime" />
+          <Property Name="IsActive" Type="bit" />
+          <Property Name="IsDeleted" Type="bit" />
+        </EntityType>
         <EntityType Name="tblUsers">
           <Key>
             <PropertyRef Name="UserId" />
           </Key>
-          <Property Name="UserId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
           <Property Name="UserName" Type="varchar" MaxLength="50" />
           <Property Name="Password" Type="varchar" MaxLength="50" />
           <Property Name="FirstName" Type="varchar" MaxLength="50" />
           <Property Name="LastName" Type="varchar" MaxLength="50" />
           <Property Name="CreatedBy" Type="int" />
-          <Property Name="CreatedAt" Type="datetime2" />
+          <Property Name="CreatedAt" Type="datetime2" Precision="7" />
           <Property Name="UpdatedBy" Type="int" />
-          <Property Name="UpdatedAt" Type="datetime2" />
+          <Property Name="UpdatedAt" Type="datetime2" Precision="7" />
           <Property Name="IsActive" Type="bit" />
           <Property Name="UserRole" Type="int" />
           <Property Name="UserEmail" Type="varchar" MaxLength="50" />
@@ -101,6 +107,15 @@
         <Function Name="uspLoadQuizAndQuestions" Aggregate="false" BuiltIn="false" NiladicFunction="false" IsComposable="false" ParameterTypeSemantics="AllowImplicitConversion" Schema="dbo">
           <Parameter Name="pQuizId" Type="int" Mode="In" />
         </Function>
+        <EntityContainer Name="QuizDBModelStoreContainer">
+          <EntitySet Name="tblCorrectOptions" EntityType="Self.tblCorrectOptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQuestionOptions" EntityType="Self.tblQuestionOptions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQuiz" EntityType="Self.tblQuiz" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQuizCategories" EntityType="Self.tblQuizCategories" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblQuizQuestions" EntityType="Self.tblQuizQuestions" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUserRole" EntityType="Self.tblUserRole" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="tblUsers" EntityType="Self.tblUsers" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
       </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
@@ -112,6 +127,7 @@
           <EntitySet Name="tblQuizs" EntityType="QuizDBModel.tblQuiz" />
           <EntitySet Name="tblQuizCategories" EntityType="QuizDBModel.tblQuizCategory" />
           <EntitySet Name="tblUsers" EntityType="QuizDBModel.tblUser" />
+          <EntitySet Name="tblUserRoles" EntityType="QuizDBModel.tblUserRole" />
         </EntityContainer>
         <EntityType Name="tblCorrectOption">
           <Key>
@@ -218,6 +234,20 @@
           <Property Type="String" Name="QuizNotes" Nullable="true" MaxLength="1000" />
           <Property Type="Boolean" Name="RequiresLogin" Nullable="true" />
         </ComplexType>
+        <EntityType Name="tblUserRole">
+          <Key>
+            <PropertyRef Name="RoleID" />
+          </Key>
+          <Property Name="RoleID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="RoleName" Type="String" MaxLength="250" FixedLength="true" Unicode="true" />
+          <Property Name="RoleAbbrivation" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="CreatedBy" Type="Int32" />
+          <Property Name="CreatedAt" Type="DateTime" Precision="3" />
+          <Property Name="UpdatedBy" Type="Int32" />
+          <Property Name="UpdatedAt" Type="DateTime" Precision="3" />
+          <Property Name="IsActive" Type="Boolean" />
+          <Property Name="IsDeleted" Type="Boolean" />
+        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
@@ -315,6 +345,21 @@
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>
+          <EntitySetMapping Name="tblUserRoles">
+            <EntityTypeMapping TypeName="QuizDBModel.tblUserRole">
+              <MappingFragment StoreEntitySet="tblUserRole">
+                <ScalarProperty Name="IsDeleted" ColumnName="IsDeleted" />
+                <ScalarProperty Name="IsActive" ColumnName="IsActive" />
+                <ScalarProperty Name="UpdatedAt" ColumnName="UpdatedAt" />
+                <ScalarProperty Name="UpdatedBy" ColumnName="UpdatedBy" />
+                <ScalarProperty Name="CreatedAt" ColumnName="CreatedAt" />
+                <ScalarProperty Name="CreatedBy" ColumnName="CreatedBy" />
+                <ScalarProperty Name="RoleAbbrivation" ColumnName="RoleAbbrivation" />
+                <ScalarProperty Name="RoleName" ColumnName="RoleName" />
+                <ScalarProperty Name="RoleID" ColumnName="RoleID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -332,6 +377,7 @@
         <DesignerProperty Name="EnablePluralization" Value="True" />
         <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
         <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+        <DesignerProperty Name="UseLegacyProvider" Value="True" />
       </DesignerInfoPropertySet>
     </Options>
     <!-- Diagram content (shape and connector positions) -->

@@ -19,11 +19,11 @@ namespace QuizWebsite.Controllers
         string SEPARATOR = "-";
         public ActionResult Index()
         {
-            DIGITS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567".ToCharArray();
-            MASK = DIGITS.Length - 1;
-            SHIFT = numberOfTrailingZeros(DIGITS.Length);
-            for (int i = 0; i < DIGITS.Length; i++) CHAR_MAP[DIGITS[i]] = i;
-            Decode("0x59772a9aa1abd17791f5fbc8b41c7dbe00000000000000000000000000000000");
+            //DIGITS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ234567".ToCharArray();
+            //MASK = DIGITS.Length - 1;
+            //SHIFT = numberOfTrailingZeros(DIGITS.Length);
+            //for (int i = 0; i < DIGITS.Length; i++) CHAR_MAP[DIGITS[i]] = i;
+            //Decode("0x59772a9aa1abd17791f5fbc8b41c7dbe00000000000000000000000000000000");
             return View();
         }
         private static int numberOfTrailingZeros(int i)

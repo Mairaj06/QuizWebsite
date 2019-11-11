@@ -87,6 +87,9 @@
     <Compile Include="tblUser.cs">
       <DependentUpon>QuizDataModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="tblUserRole.cs">
+      <DependentUpon>QuizDataModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="uspLoadQuizAndQuestions_Result.cs">
       <DependentUpon>QuizDataModel.tt</DependentUpon>
     </Compile>
@@ -104,7 +107,9 @@
     </EntityDeploy>
   </ItemGroup>
   <ItemGroup>
-    <None Include="App.Config" />
+    <None Include="App.Config">
+      <SubType>Designer</SubType>
+    </None>
     <None Include="packages.config" />
     <None Include="QuizDataModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>

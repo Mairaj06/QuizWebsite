@@ -207,5 +207,27 @@ namespace QuizServices
             
         }
 
+        public List<UserRoles> UserRolesList()
+        {
+            BlUsers obj = new BlUsers();
+            return obj.UserRolesList();
+
+        }
+
+        public DataModel.UserRoles SaveUserRole(UserRoles objUserRole)
+        {
+            try
+            {
+                BlUsers obj = new BlUsers();
+                return obj.AddUserRole(objUserRole);
+            }
+            catch (Exception ex)
+            {
+
+                throw ex;
+            }
+
+        }
+
     }
 }

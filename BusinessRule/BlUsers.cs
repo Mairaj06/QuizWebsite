@@ -33,5 +33,16 @@ namespace BusinessRule
             UserRepo obj = new UserRepo();
             return obj.Get().ToList();
         }
+
+        public List<UserRoles> UserRolesList()
+        {
+            UserRepo obj = new UserRepo();
+            return obj.GetUserRolesList().ToList();
+        }
+        public UserRoles AddUserRole(UserRoles userrole)
+        {
+            UserRepo obj = new UserRepo();
+            return obj.AddUserRole(userrole);
+        }
     }
 }

@@ -82,7 +82,7 @@ namespace DataAccess.DataRepository
             obj.Success = true;
             obj.CreatedAt = DateTime.Now;
             obj.UpdatedAt = DateTime.Now; 
-            obj.ErrorMessage = "User added successfully";
+            obj.ErrorMessage = "User saved successfully";
             }
             catch (Exception ex)
             {
@@ -145,6 +145,83 @@ namespace DataAccess.DataRepository
             
             })).FirstOrDefault();
             return user;
+        }
+
+        public IQueryable<DataModel.UserRoles> GetUserRolesList()
+        {
+            return (from u in context.tblUserRoles
+                    select new DataModel.UserRoles()
+                    {
+                        RoleID = u.RoleID,
+                        RoleName = u.RoleName,
+                        RoleAbbrivation = u.RoleAbbrivation,
+                        CreatedAt = u.CreatedAt.Value,
+                        UpdatedAt = u.UpdatedAt.Value,
+                        UpdatedBy = u.UpdatedBy.Value,
+                        CreatedBy= u.CreatedBy.Value
+                    });
+
+        }
+
+        public DataModel.UserRoles AddUserRole(DataModel.UserRoles obj)
+        {
+            try
+            {
+
+
+                //CustomResponse response = new CustomResponse();
+                var existing = context.tblUserRoles.Where(u => u.RoleID == obj.RoleID).FirstOrDefault();
+                if (obj.RoleID != 0)
+                    return UpdateUserRole(obj);
+                tblUserRole userrole = new tblUserRole();
+                userrole.RoleName = obj.RoleName;
+                userrole.RoleAbbrivation = obj.RoleAbbrivation;
+                userrole.CreatedBy = obj.CreatedBy;
+                userrole.CreatedAt = DateTime.Now;
+                userrole.UpdatedBy = obj.UpdatedBy;
+                userrole.UpdatedAt = DateTime.Now;
+                userrole.IsActive = obj.IsActive;
+                if (existing != null)
+                {
+                    obj.ErrorMessage = "User Role with same name already exists";
+                    obj.Success = false;
+                    obj.CreatedAt = existing.CreatedAt.Value;
+                    obj.UpdatedAt = existing.UpdatedAt.Value;
+                    return obj;
+                }
+                context.tblUserRoles.Add(userrole);
+                context.SaveChanges();
+
+                //Assuming the database is generating your Id's for you
+                obj.RoleID = userrole.RoleID;
+                obj.Success = true;
+                obj.CreatedAt = DateTime.Now;
+                obj.UpdatedAt = DateTime.Now;
+                obj.ErrorMessage = "User role saved successfully";
+            }
+            catch (Exception ex)
+            {
+
+                obj.ErrorMessage = ex.Message;
+                obj.Success = false;
+            }
+            return obj;
+
+        }
+        public DataModel.UserRoles UpdateUserRole(DataModel.UserRoles obj)
+        {
+            tblUserRole userrole = new tblUserRole();
+            userrole.RoleID = obj.RoleID;
+            userrole.RoleName = obj.RoleName;
+            userrole.RoleAbbrivation = obj.RoleAbbrivation;
+            userrole.CreatedBy = obj.CreatedBy;
+            userrole.CreatedAt = obj.CreatedAt;
+            userrole.UpdatedBy = obj.UpdatedBy;
+            userrole.UpdatedAt = obj.UpdatedAt;
+            userrole.IsActive = obj.IsActive;
+            context.Entry(userrole).State = EntityState.Modified;
+            context.SaveChanges();
+            return obj;
         }
     }
 

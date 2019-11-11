@@ -42,6 +42,15 @@ namespace QuizWebsite.Controllers
         {
             return View();
         }
+        public ActionResult UsersRolesList()
+        {
+            return View();
+        }
+
+        public ActionResult InsertUpdateRoles()
+        {
+            return View();
+        }
 
     }
 }

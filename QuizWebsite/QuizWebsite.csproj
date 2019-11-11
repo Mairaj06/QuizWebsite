@@ -20,6 +20,8 @@
     <IISExpressAnonymousAuthentication />
     <IISExpressWindowsAuthentication />
     <IISExpressUseClassicPipelineMode />
+    <Use64BitIISExpress />
+    <UseGlobalApplicationHostFile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -222,6 +224,7 @@
     <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
     <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="DBScript\script.sql" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -231,6 +234,7 @@
     <Content Include="Scripts\CustomJs\AddQuiz.js" />
     <Content Include="Scripts\Common.js" />
     <Content Include="Scripts\CustomJs\Categories.js" />
+    <Content Include="Scripts\CustomJs\UsersRoles.js" />
     <Content Include="Scripts\CustomJs\UsersQuizList.js" />
     <Content Include="Scripts\CustomJs\QuizCategories.js" />
     <Content Include="Scripts\CustomJs\QuizList.js" />
@@ -367,6 +371,8 @@
     <Content Include="Views\Quiz\QuizCategories.cshtml" />
     <Content Include="Views\Quiz\QuizList.cshtml" />
     <Content Include="Views\Quiz\AttemptQuiz.cshtml" />
+    <Content Include="Views\Account\UsersRolesList.cshtml" />
+    <Content Include="Views\Account\InsertUpdateRoles.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

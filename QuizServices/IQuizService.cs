@@ -85,7 +85,15 @@ namespace QuizServices
         [OperationContract]
         [WebInvoke(UriTemplate = "UsersList", Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
         List<Users> UsersList(Users User);
-        
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "UserRolesList", Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        List<UserRoles> UserRolesList();
+
+        [OperationContract]
+        [WebInvoke(UriTemplate = "SaveUserRole", Method = "POST", BodyStyle = WebMessageBodyStyle.WrappedRequest, RequestFormat = WebMessageFormat.Json, ResponseFormat = WebMessageFormat.Json)]
+        UserRoles SaveUserRole(UserRoles objUserRole);
+
     }
 
 
